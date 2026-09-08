@@ -1,0 +1,245 @@
+/* UK CV Print Styles - Text only, black on white, 2 A4 pages */
+@media print {
+  /* Force exact page sizing */
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
+
+  /* Base styles - override everything with highest priority */
+  html, body {
+    background: white !important;
+    color: black !important;
+    font-size: 9pt;
+    line-height: 1.2 !important;
+    font-family: "Times New Roman", serif !important;
+  }
+
+  /* Reset ALL Tailwind CSS color variables to black */
+  *, *::before, *::after {
+    --tw-text-opacity: 1 !important;
+    --tw-bg-opacity: 1 !important;
+    --tw-border-opacity: 1 !important;
+    --tw-ring-opacity: 1 !important;
+    --tw-shadow-opacity: 1 !important;
+    --tw-gradient-from: #000 !important;
+    --tw-gradient-to: #000 !important;
+    --tw-gradient-via: #000 !important;
+    --color-current: #000 !important;
+    --color-transparent: transparent !important;
+    --foreground: 0 0% 0% !important;
+    --muted-foreground: 0 0% 20% !important;
+    --primary: 0 0% 0% !important;
+    --primary-foreground: 0 0% 100% !important;
+    --secondary: 0 0% 20% !important;
+    --secondary-foreground: 0 0% 100% !important;
+    --accent: 0 0% 20% !important;
+    --accent-foreground: 0 0% 100% !important;
+    --destructive: 0 0% 0% !important;
+    --destructive-foreground: 0 0% 100% !important;
+    --muted: 0 0% 20% !important;
+    --card: 0 0% 100% !important;
+    --card-foreground: 0 0% 0% !important;
+    --popover: 0 0% 100% !important;
+    --popover-foreground: 0 0% 0% !important;
+    --border: 0 0% 0% !important;
+    --input: 0 0% 0% !important;
+    --ring: 0 0% 0% !important;
+  }
+
+  /* Force all text to black */
+  * {
+    color: black !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-color: black !important;
+  }
+
+  /* Remove glassmorphism and gradients */
+  .glass,
+  .glass-strong,
+  .glass-border,
+  .backdrop-blur,
+  .bg-gradient-to-br,
+  .bg-gradient-to-r,
+  .bg-clip-text,
+  .text-transparent {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Hide all images and decorative elements */
+  img,
+  canvas,
+  svg,
+  video {
+    display: none !important;
+  }
+
+  /* Hide Three.js background */
+  .threejs,
+  canvas {
+    display: none !important;
+  }
+
+  /* Hide footer entirely */
+  footer {
+    display: none !important;
+  }
+
+  /* Hide sections not needed on CV */
+  section[aria-labelledby="projects-heading"],
+  section[aria-labelledby="beyond-heading"],
+  section[aria-labelledby="contact-heading"] {
+    display: none !important;
+  }
+
+  /* Hide the tools/links card in About section */
+  .print-hide-links {
+    display: none !important;
+  }
+
+  /* Hide Download CV button */
+  .flex-shrink-0 {
+    display: none !important;
+  }
+
+  /* Make header NOT sticky - keep it at top of content flow */
+  header {
+    position: relative !important;
+    top: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0.3em !important;
+    border-bottom: 1px solid #ccc !important;
+    margin-bottom: 0.3em !important;
+  }
+
+  /* Remove avatar from print header */
+  header .relative.flex.size-8.shrink-0.rounded-full,
+  header [data-slot="avatar"] {
+    display: none !important;
+  }
+
+  /* Cards - remove all styling */
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl,
+  .shadow-black {
+    box-shadow: none !important;
+  }
+
+  /* Badges/tags - plain text */
+  .rounded-full {
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 8pt !important;
+  }
+
+  /* Ensure all headings are black bold */
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+    font-weight: bold !important;
+    margin-bottom: 0.2em !important;
+  }
+
+  /* Hide skip link */
+  .skip-link,
+  .sr-only {
+    display: none !important;
+  }
+
+  /* TIGHTER SPACING TO FIT 2 PAGES */
+  
+  /* Reduce section spacing */
+  .space-y-16 > * + * {
+    margin-top: 0.2em !important;
+  }
+  
+  /* Card padding */
+  .pt-6 {
+    padding-top: 0.15em !important;
+  }
+
+  /* Tighter list spacing for education modules */
+  ul {
+    margin: 0.05em 0 !important;
+    padding-left: 0.6em !important;
+  }
+  
+  li {
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* Hide decorative separator lines */
+  [data-orientation="horizontal"] {
+    display: none !important;
+  }
+
+  /* Tighter section gaps */
+  section {
+    margin-bottom: 0.2em !important;
+    page-break-inside: avoid;
+  }
+
+  /* Smaller headings for print */
+  h2 {
+    font-size: 12pt !important;
+    margin-bottom: 0.15em !important;
+  }
+
+  h3 {
+    font-size: 10pt !important;
+  }
+
+  h4 {
+    font-size: 8pt !important;
+    margin-bottom: 0.1em !important;
+  }
+
+  /* Remove flex spacing */
+  .flex.items-center\.gap-1\.5,
+  .flex.items-center.gap-2,
+  .flex.items-center.gap-1 {
+    gap: 0.1em !important;
+  }
+
+  /* Tighten badge grid */
+  .flex.flex-wrap.gap-2 {
+    gap: 0.1em !important;
+  }
+
+  /* Hide the About Me section heading gap */
+  .flex.items-center.gap-3.mb-6 {
+    margin-bottom: 0.2em !important;
+  }
+
+  /* Tighten the experience card spacing */
+  .space-y-4 {
+    gap: 0.2em !important;
+  }
+
+  /* Tighten the education module spacing */
+  .space-y-3 {
+    gap: 0.15em !important;
+  }
+
+  /* Hide unnecessary icons */
+  .w-4.h-4, .w-3\.5.h-3\.5 {
+    display: none !important;
+  }
+
+  /* Tighten main content padding */
+  .px-6 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .py-12 {
+    padding-top: 0.1em !important;
+    padding-bottom: 0.1em !important;
+  }
+}
