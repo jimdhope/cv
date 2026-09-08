@@ -233,7 +233,7 @@ export default function PortfolioPage() {
             </div>
 
             {/* Right Column - About Me */}
-            <div className="space-y-4 text-muted-foreground leading-relaxed rounded-xl bg-white/[0.03] p-6 md:p-8">
+            <div className="space-y-4 text-muted-foreground leading-relaxed rounded-xl glass p-6 md:p-8">
               <h2 className="text-2xl font-bold text-foreground">About Me</h2>
               <p>
                 Experienced product trainer with a strong background in customer service. Adept at designing and delivering engaging training programmes, fostering knowledge retention, and enhancing team performance.
@@ -251,16 +251,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
-
-      {/* SVG Filter for glassmorphism distortion */}
-      <svg className="absolute w-0 h-0" aria-hidden="true">
-        <defs>
-          <filter id="glass-distortion">
-            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="2" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-        </defs>
-      </svg>
 
       <main id="main-content" className="relative z-10 max-w-5xl mx-auto px-6 py-12 space-y-16" role="main">
         {/* Projects Showcase */}
@@ -467,7 +457,7 @@ export default function PortfolioPage() {
       </main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 glass-strong" role="contentinfo">
+      <footer className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 glass-strong" role="contentinfo" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} James Hope</p>
           <div className="flex items-center gap-4">

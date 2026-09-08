@@ -37,6 +37,7 @@ export default function StickyHeader() {
         opacity: visible ? 1 : 0,
         transform: visible ? 'translateY(0)' : 'translateY(-100%)',
         pointerEvents: visible ? 'auto' : 'none',
+        paddingTop: 'env(safe-area-inset-top, 0)',
       }}
       role="banner"
       aria-label="Site header"
@@ -53,11 +54,11 @@ export default function StickyHeader() {
             </Avatar>
 
             {/* Text content */}
-            <div className="flex-1 min-w-0 flex flex-col justify-center">
-              <h1 className="font-bold leading-tight bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent text-lg">
+            <div className="flex-1 min-w-0 flex flex-col justify-center overflow-hidden">
+              <h1 className="font-bold leading-tight bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent text-lg whitespace-nowrap">
                 James Hope
               </h1>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-sm whitespace-nowrap overflow-hidden text-ellipsis">
                 Customer Service Assistant · Creative Technologist
               </p>
             </div>
