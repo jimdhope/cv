@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
-import "@/styles/print.css";
 import AnimatedBackground from "@/components/animated-background";
 
 const lexend = Lexend({

@@ -123,7 +123,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-lexend), system-ui, sans-serif;
   }
   html {
     @apply font-sans;
@@ -141,6 +140,25 @@
   .skip-link:focus {
     @apply top-4;
   }
+}
+
+/* Mockup images - simple responsive display */
+.mockup-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mockup-container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.mockup-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 
 @layer utilities {
