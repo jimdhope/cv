@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="min-h-full flex flex-col text-foreground">
         <AnimatedBackground />
-        <div className="fixed inset-0 -z-5 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(15,15,30,0.4) 0%, rgba(10,10,18,0.7) 100%)' }} />
+        <div className="fixed inset-0 -z-5 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(15,25,45,0.3) 0%, rgba(8,15,28,0.6) 100%)' }} />
         {children}
       </body>
     </html>

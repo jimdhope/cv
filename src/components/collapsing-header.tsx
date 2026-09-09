@@ -55,7 +55,7 @@ export default function StickyHeader() {
 
             {/* Text content */}
             <div className="flex-1 min-w-0 flex flex-col justify-center overflow-hidden">
-              <h1 className="font-bold leading-tight bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent text-base md:text-lg whitespace-nowrap">
+              <h1 className="font-bold leading-tight bg-gradient-to-r from-primary via-cyan-400 to-indigo-400 bg-clip-text text-transparent text-base md:text-lg whitespace-nowrap">
                 James Hope
               </h1>
               <p className="text-muted-foreground text-xs md:text-sm whitespace-nowrap overflow-hidden text-ellipsis">

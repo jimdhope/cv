@@ -196,7 +196,7 @@ export default function PortfolioPage() {
                     JH
                   </AvatarFallback>
                 </Avatar>
-                <h1 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent mb-2 md:mb-3">
+                <h1 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-primary via-cyan-400 to-indigo-400 bg-clip-text text-transparent mb-2 md:mb-3">
                   James Hope
                 </h1>
                 <p className="text-base md:text-xl text-muted-foreground">
