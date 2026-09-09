@@ -142,23 +142,29 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       <Dialog open={!!openProject} onOpenChange={() => setOpenProject(null)}>
-        <DialogContent className="max-w-lg glass max-h-[85vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <span className="text-2xl" aria-hidden="true">{openProject?.emoji}</span>
-              {openProject?.name}
-            </DialogTitle>
-            <DialogDescription className="text-base text-foreground pt-2">
-              {openProject?.detail}
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex items-center justify-between pt-4">
-            <Badge variant="secondary">{openProject?.tech}</Badge>
-            <Button size="sm" variant="outline">
-              <a href={openProject?.url} target="_blank" rel="noopener" className="flex items-center gap-1">
-                <ExternalLink className="w-3 h-3" aria-hidden="true" /> View on GitHub
-              </a>
-            </Button>
+        <DialogContent className="max-w-lg glass p-0 overflow-hidden">
+          <div className="flex flex-col max-h-[85vh]">
+            <div className="p-4 pb-0">
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <span className="text-2xl" aria-hidden="true">{openProject?.emoji}</span>
+                  {openProject?.name}
+                </DialogTitle>
+              </DialogHeader>
+            </div>
+            <div className="flex-1 overflow-y-auto p-4">
+              <DialogDescription className="text-base text-foreground">
+                {openProject?.detail}
+              </DialogDescription>
+              <div className="flex items-center justify-between pt-4">
+                <Badge variant="secondary">{openProject?.tech}</Badge>
+                <Button size="sm" variant="outline">
+                  <a href={openProject?.url} target="_blank" rel="noopener" className="flex items-center gap-1">
+                    <ExternalLink className="w-3 h-3" aria-hidden="true" /> View on GitHub
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
