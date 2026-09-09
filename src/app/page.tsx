@@ -184,67 +184,67 @@ export default function PortfolioPage() {
       <StickyHeader />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col" aria-label="Hero">
+      <section className="relative min-h-screen flex flex-col hero-section" aria-label="Hero">
         <div className="flex-1 flex items-center">
-          <div className="max-w-5xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center py-24">
+          <div className="max-w-5xl mx-auto px-4 md:px-6 w-full grid md:grid-cols-2 gap-6 md:gap-12 items-center py-12 md:py-24">
             {/* Left Column */}
-            <div className="flex flex-col justify-between text-right min-h-full">
+            <div className="flex flex-col justify-between text-center md:text-right min-h-full">
               <div>
-                <Avatar className="border-2 border-primary/20 w-32 h-32 md:w-40 md:h-40 ml-auto mr-0 mb-6">
+                <Avatar className="border-2 border-primary/20 w-28 h-28 md:w-40 md:h-40 mx-auto md:ml-auto md:mr-0 mb-4 md:mb-6">
                   <AvatarImage src="/avatar.png" alt="James Hope" />
-                  <AvatarFallback className="font-bold bg-gradient-to-br from-primary via-purple-500 to-pink-500 text-white flex items-center justify-center text-4xl">
+                  <AvatarFallback className="font-bold bg-gradient-to-br from-primary via-purple-500 to-pink-500 text-white flex items-center justify-center text-3xl md:text-4xl">
                     JH
                   </AvatarFallback>
                 </Avatar>
-                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent mb-3">
+                <h1 className="text-3xl md:text-6xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent mb-2 md:mb-3">
                   James Hope
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground">
+                <p className="text-base md:text-xl text-muted-foreground">
                   Customer Service Assistant<br />Creative Technologist
                 </p>
                 <Button
                   onClick={() => window.open('/cv.pdf', '_blank')}
                   size="sm"
-                  className="gap-2 mt-4"
+                  className="gap-2 mt-3 md:mt-4"
                 >
                   <Download className="w-4 h-4" aria-hidden="true" />
                   Download CV
                 </Button>
               </div>
-              {/* Hero Links - Right aligned */}
-              <div className="flex flex-wrap items-center justify-end gap-4 md:gap-6 mt-8">
-                <a href="https://www.amazon.co.uk/stores/Jim-Hope/author/B0FHWXDZBR/allbooks" target="_blank" rel="noopener" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group">
-                  <BookOpen className="w-4 h-4 text-primary" aria-hidden="true" />
+              {/* Hero Links - Center on mobile, right on desktop */}
+              <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 md:gap-6 mt-4 md:mt-8">
+                <a href="https://www.amazon.co.uk/stores/Jim-Hope/author/B0FHWXDZBR/allbooks" target="_blank" rel="noopener" className="flex items-center gap-1.5 text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                  <BookOpen className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" aria-hidden="true" />
                   <span className="group-hover:text-primary transition-colors">3 Book Series on Amazon</span>
                 </a>
-                <a href="https://open.spotify.com/artist/0qzcMDOcviJ0GqtWiqWckS" target="_blank" rel="noopener" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group">
-                  <Music className="w-4 h-4 text-primary" aria-hidden="true" />
+                <a href="https://open.spotify.com/artist/0qzcMDOcviJ0GqtWiqWckS" target="_blank" rel="noopener" className="flex items-center gap-1.5 text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                  <Music className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" aria-hidden="true" />
                   <span className="group-hover:text-primary transition-colors">Music on Spotify</span>
                 </a>
-                <a href="https://hub.docker.com/u/jimdhope" target="_blank" rel="noopener" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group">
-                  <Container className="w-4 h-4 text-primary" aria-hidden="true" />
+                <a href="https://hub.docker.com/u/jimdhope" target="_blank" rel="noopener" className="flex items-center gap-1.5 text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors group">
+                  <Container className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" aria-hidden="true" />
                   <span className="group-hover:text-primary transition-colors">9 Docker Repos</span>
                 </a>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Wrench className="w-4 h-4 text-primary" aria-hidden="true" />
+                <div className="flex items-center gap-1.5 text-xs md:text-sm text-muted-foreground">
+                  <Wrench className="w-3.5 h-3.5 md:w-4 md:h-4 text-primary" aria-hidden="true" />
                   <span>Self-Hosted Everything</span>
                 </div>
               </div>
             </div>
 
             {/* Right Column - About Me */}
-            <div className="space-y-4 text-muted-foreground leading-relaxed rounded-xl glass p-6 md:p-8">
-              <h2 className="text-2xl font-bold text-foreground">About Me</h2>
-              <p>
+            <div className="space-y-3 md:space-y-4 text-muted-foreground leading-relaxed rounded-xl glass p-4 md:p-8">
+              <h2 className="text-xl md:text-2xl font-bold text-foreground">About Me</h2>
+              <p className="text-sm md:text-base">
                 Experienced product trainer with a strong background in customer service. Adept at designing and delivering engaging training programmes, fostering knowledge retention, and enhancing team performance.
               </p>
-              <p>
+              <p className="text-sm md:text-base">
                 Highly organised and effective in dynamic, fast-paced environments; skilled at prioritising tasks and achieving objectives with creativity, enthusiasm, and a collaborative approach.
               </p>
-              <p>
+              <p className="text-sm md:text-base">
                 Earlier in my career I worked as a <strong className="text-foreground">Venue &amp; Event Technician</strong>, designing and operating lighting, sound, and AV for theatres, conference rooms, and live events.
               </p>
-              <p>
+              <p className="text-sm md:text-base">
                 Outside of work I use <strong className="text-foreground">AI to bring ideas to life</strong> — dashboards, data pipelines, and self-hosted services. I write fantasy novels, release music on Spotify, and run a blog where I write about whatever crosses my mind — technology, smart home, live production, and everything in between.
               </p>
             </div>

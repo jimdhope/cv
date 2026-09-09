@@ -223,8 +223,47 @@
       inset 0 -1px 0 rgba(1, 8, 15, 0.55);
   }
 
-  /* Text shadow for readability over glass */
-  .glass-text {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  /* Mobile: solid backgrounds for header/footer since backdrop-filter is unreliable */
+  @media (max-width: 768px) {
+    .glass-strong {
+      background: rgba(12, 12, 20, 0.95);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+}
+
+/* Mobile-specific layout improvements */
+@media (max-width: 768px) {
+  /* Reduce hero padding */
+  .hero-section {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Make footer more compact */
+  footer .max-w-5xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Reduce section spacing */
+  main.space-y-16 > :not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  /* Smaller heading sizes */
+  h2.text-3xl {
+    font-size: 1.75rem;
+  }
+
+  /* Tighter experience cards */
+  .glass .pt-6 {
+    padding-top: 1rem;
+  }
+
+  /* Education cards more compact */
+  .education-card .pt-6 {
+    padding-top: 1rem;
   }
 }

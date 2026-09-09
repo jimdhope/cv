@@ -43,22 +43,22 @@ export default function StickyHeader() {
       aria-label="Site header"
     >
       <div className="glass-strong border-b border-white/10">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="flex items-center gap-4 h-16">
+        <div className="max-w-5xl mx-auto px-4 md:px-6">
+          <div className="flex items-center gap-3 md:gap-4 h-14 md:h-16">
             {/* Avatar */}
-            <Avatar className="border-2 border-primary/20 flex-shrink-0 w-10 h-10">
+            <Avatar className="border-2 border-primary/20 flex-shrink-0 w-9 h-9 md:w-10 md:h-10">
               <AvatarImage src="/avatar.png" alt="James Hope" />
-              <AvatarFallback className="font-bold bg-gradient-to-br from-primary via-purple-500 to-pink-500 text-white flex items-center justify-center text-sm">
+              <AvatarFallback className="font-bold bg-gradient-to-br from-primary via-purple-500 to-pink-500 text-white flex items-center justify-center text-xs md:text-sm">
                 JH
               </AvatarFallback>
             </Avatar>
 
             {/* Text content */}
             <div className="flex-1 min-w-0 flex flex-col justify-center overflow-hidden">
-              <h1 className="font-bold leading-tight bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent text-lg whitespace-nowrap">
+              <h1 className="font-bold leading-tight bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent text-base md:text-lg whitespace-nowrap">
                 James Hope
               </h1>
-              <p className="text-muted-foreground text-sm whitespace-nowrap overflow-hidden text-ellipsis">
+              <p className="text-muted-foreground text-xs md:text-sm whitespace-nowrap overflow-hidden text-ellipsis">
                 Customer Service Assistant · Creative Technologist
               </p>
             </div>
@@ -68,10 +68,10 @@ export default function StickyHeader() {
               <Button
                 onClick={() => window.open('/cv.pdf', '_blank')}
                 size="sm"
-                className="gap-2"
+                className="gap-1.5 md:gap-2 h-8 md:h-9"
               >
-                <Download className="w-4 h-4" aria-hidden="true" />
-                <span className="hidden sm:inline">Download CV</span>
+                <Download className="w-3.5 h-3.5 md:w-4 md:h-4" aria-hidden="true" />
+                <span className="hidden sm:inline text-xs md:text-sm">Download CV</span>
               </Button>
             </div>
           </div>
