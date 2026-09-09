@@ -1,11 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ProjectCarousel } from "@/components/project-carousel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Download, BookOpen, Music, Container, Wrench } from "lucide-react";
+import { Mail, Download, BookOpen, Music, Container, Wrench, ChevronDown } from "lucide-react";
 import StickyHeader from "@/components/collapsing-header";
 
 const projects = [
@@ -178,6 +179,9 @@ const education = [
 const allSkills = ["Customer Service", "Employee Training", "Live Events", "Event Production", "Lighting Design", "Stage Lighting", "Video Production", "Live Video Streaming", "Video Editing", "Professional Audio", "Live Sound", "Photography", "Image Editing", "Stage Management", "Performing Arts", "Music Production", "Piano", "Microsoft Office", "CRM", "Communication", "Teamwork", "Attention to Detail", "Linux", "Adobe Photoshop", "CAD", "Typing", "Data Entry", "Computer Hardware"];
 
 export default function PortfolioPage() {
+  const [expandedExp, setExpandedExp] = useState<string | null>(null);
+  const [expandedEdu, setExpandedEdu] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-transparent">
       {/* Sticky Header */}
@@ -348,21 +352,29 @@ export default function PortfolioPage() {
             <h2 id="experience-heading" className="text-3xl font-bold">Experience</h2>
           </div>
           <div className="space-y-4">
-            {experience.map((exp) => (
-              <Card key={exp.id} className={exp.highlight ? "border-primary/30 glass" : "glass"}>
-                <CardContent className="pt-6">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 mb-2">
-                    <h3 className="font-semibold">{exp.role}</h3>
-                    <span className="text-sm text-muted-foreground font-mono">{exp.dates}</span>
-                  </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-sm text-primary">{exp.company}</span>
-                    <Badge variant="outline" className="text-xs">{exp.location}</Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {experience.map((exp) => {
+              const isExpanded = expandedExp === exp.id;
+              return (
+                <Card key={exp.id} className={exp.highlight ? "border-primary/30 glass" : "glass"}>
+                  <CardContent className="pt-6">
+                    <button onClick={() => setExpandedExp(isExpanded ? null : exp.id)} className="w-full text-left" aria-expanded={isExpanded}>
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-1 mb-2">
+                        <h3 className="font-semibold">{exp.role}</h3>
+                        <span className="text-sm text-muted-foreground font-mono">{exp.dates}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm text-primary">{exp.company}</span>
+                        <Badge variant="outline" className="text-xs">{exp.location}</Badge>
+                        <ChevronDown className={`w-4 h-4 ml-auto transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                      </div>
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 mt-3' : 'max-h-0'}`}>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </section>
 
@@ -372,28 +384,37 @@ export default function PortfolioPage() {
             <h2 id="education-heading" className="text-3xl font-bold">Education</h2>
           </div>
           <div className="grid grid-cols-1 gap-6">
-            {education.map((edu) => (
-              <Card key={edu.school} className="glass">
-                <CardContent className="pt-6">
-                  <div className="text-xs text-primary font-mono mb-1">{edu.dates}</div>
-                  <h3 className="font-semibold">{edu.title}{edu.grade && <> — <span className="text-green-500">{edu.grade}</span></>}</h3>
-                  <p className="text-sm text-muted-foreground mt-1 mb-2">{edu.school}</p>
-                  {edu.note && <p className="text-sm text-muted-foreground mt-2 mb-3">{edu.note}</p>}
-                  {edu.modules && (
-                    <div className="mt-3 space-y-2">
-                      {Object.entries(edu.modules).map(([year, mods]) => (
-                        <div key={year}>
-                          <h4 className="text-xs font-semibold text-foreground/80 uppercase tracking-wider mb-0.5">{year}</h4>
-                          <p className="text-xs text-muted-foreground/70">
-                            {(mods as string[]).join(', ')}
-                          </p>
+            {education.map((edu) => {
+              const isExpanded = expandedEdu === edu.school;
+              const hasModules = edu.modules && Object.keys(edu.modules).length > 0;
+              return (
+                <Card key={edu.school} className="glass">
+                  <CardContent className="pt-6">
+                    <button onClick={() => setExpandedEdu(isExpanded ? null : edu.school)} className="w-full text-left" aria-expanded={isExpanded}>
+                      <div className="text-xs text-primary font-mono mb-1">{edu.dates}</div>
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-semibold">{edu.title}{edu.grade && <> — <span className="text-green-500">{edu.grade}</span></>}</h3>
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-1">{edu.school}</p>
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[500px] mt-3' : 'max-h-0'}`}>
+                      {edu.note && <p className="text-sm text-muted-foreground mb-3">{edu.note}</p>}
+                      {hasModules && (
+                        <div className="space-y-2 overflow-y-auto max-h-80">
+                          {Object.entries(edu.modules).map(([year, mods]) => (
+                            <div key={year}>
+                              <h4 className="text-xs font-semibold text-foreground/80 uppercase tracking-wider mb-0.5">{year}</h4>
+                              <p className="text-xs text-muted-foreground/70">{(mods as string[]).join(', ')}</p>
+                            </div>
+                          ))}
                         </div>
-                      ))}
+                      )}
                     </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </section>
 
