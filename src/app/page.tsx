@@ -457,7 +457,7 @@ export default function PortfolioPage() {
       </main>
 
       {/* Footer */}
-      <footer className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 glass-strong" role="contentinfo" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)' }}>
+      <footer className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 glass-strong" role="contentinfo" style={{ paddingBottom: 'env(safe-area-inset-bottom, 0)', borderRadius: 0 }}>
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} James Hope</p>
           <div className="flex items-center gap-4">

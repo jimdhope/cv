@@ -42,7 +42,7 @@ export default function StickyHeader() {
       role="banner"
       aria-label="Site header"
     >
-      <div className="glass-strong border-b border-white/10">
+      <div className="glass-strong border-b border-white/10" style={{ borderRadius: 0 }}>
         <div className="max-w-5xl mx-auto px-4 md:px-6">
           <div className="flex items-center gap-3 md:gap-4 h-14 md:h-16">
             {/* Avatar */}
