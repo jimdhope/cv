@@ -42,14 +42,14 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
     emblaApi.on("select", onSelect);
   }, [emblaApi, onSelect]);
 
-  // Auto-scroll every 5 seconds, pause on hover
+  // Auto-scroll every 5 seconds, pause on hover or flip
   useEffect(() => {
-    if (!emblaApi || isPaused) return;
+    if (!emblaApi || isPaused || flippedCard) return;
     const interval = setInterval(() => {
       emblaApi.scrollNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, [emblaApi, isPaused]);
+  }, [emblaApi, isPaused, flippedCard]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -67,7 +67,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
             {projects.map((project) => {
               const mockupImage = mockupImages[project.mockup];
               return (
-                <div key={project.name} className="flex-[0_0_100%] min-w-0 px-4 md:px-8">
+                <div key={project.name} className={`flex-[0_0_100%] min-w-0 px-4 md:px-8 ${flippedCard === project.name ? 'z-10' : ''}`}>
                   <div className={`relative mx-auto max-w-3xl transition-transform duration-700 ease-in-out ${flippedCard === project.name ? 'rotate-y-180' : ''}`} style={{ transformStyle: 'preserve-3d' }}>
                     {/* Front Face */}
                     <Card className="mx-auto max-w-3xl glass w-full" style={{ backfaceVisibility: 'hidden' }}>
