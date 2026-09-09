@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +31,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [openProject, setOpenProject] = useState<Project | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const scrollPositionRef = useRef(0);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -51,6 +52,15 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
     }, 5000);
     return () => clearInterval(interval);
   }, [emblaApi, isPaused]);
+
+  // Save/restore scroll position when dialog opens/closes
+  useEffect(() => {
+    if (openProject) {
+      scrollPositionRef.current = window.scrollY;
+    } else {
+      window.scrollTo(0, scrollPositionRef.current);
+    }
+  }, [openProject]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -132,7 +142,7 @@ export function ProjectCarousel({ projects }: { projects: Project[] }) {
       </div>
 
       <Dialog open={!!openProject} onOpenChange={() => setOpenProject(null)}>
-        <DialogContent className="max-w-lg glass">
+        <DialogContent className="max-w-lg glass max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <span className="text-2xl" aria-hidden="true">{openProject?.emoji}</span>
